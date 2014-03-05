@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 04 Mar 2014 15:49:35 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: PHP/5.3.10-1ubuntu3.7
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Credentials: false
+
+{ "id": 146800, "external_id": "EXT-420", "type": 1, "status": 1, "full_name": "myERP", "address": { "label1": "567  Sutter St.", "label2": "", "label3": "", "zipcode": "94102", "city": "San Francisco", "country": "United States", "localisation": "California", "short_localisation": "CA", "full_address": "567  Sutter St. San Francisco CA 94102 United States" }, "shipping_address": { "label1": "567  Sutter St.", "label2": "", "label3": "", "zipcode": "94102", "city": "San Francisco", "country": "United States", "localisation": "California", "short_localisation": "CA", "full_address": "567  Sutter St. San Francisco CA 94102 United States" }, "phone_number": "(415) 779-6536", "email": "support@myerp.com", "website": "www.myerp.com", "payment_terms": 2, "currency": "USD", "sales_tax": 3, "user_code": "CUS-018", "opt_in_to_emails": false, "comment": "- myERP -\nRun your business in the Cloud", "company_name": "myERP", "employee_count": 15, "industry": 12, "incorporation_status": 3, "taxpayer_id_number": "777 898EA", "siret": "" }

@@ -1,0 +1,155 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 05 Mar 2014 00:39:27 GMT
+Accept-Ranges: bytes
+Server: Restlet-Framework/2.2m3
+Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+X-MyERP-Has-Next-Page: true
+Content-Length: 3044
+
+[{
+  "id": 261365,
+  "external_id": "",
+  "type": 2,
+  "status": 1,
+  "full_name": "Test",
+  "address": {
+    "label1": "",
+    "label2": "res",
+    "label3": "",
+    "zip_code": "",
+    "city": "San Fran",
+    "country": "United States",
+    "localisation": "California",
+    "short_localisation": "CA",
+    "full_address": "res San Fran CA United States"
+  },
+  "shipping_address": {
+    "label1": "",
+    "label2": "res",
+    "label3": "",
+    "zip_code": "",
+    "city": "San Fran",
+    "country": "United States",
+    "localisation": "California",
+    "short_localisation": "CA",
+    "full_address": "res San Fran CA United States"
+  },
+  "phone_number": "",
+  "email": "didier.baquier+20@myerp.com",
+  "website": "",
+  "contacts": [
+    {
+      "id": 226598,
+      "first_name": "",
+      "last_name": "contact",
+      "full_name": "contact",
+      "customer_id": 261365,
+      "cell_number": "",
+      "work_phone": "",
+      "home_phone": "",
+      "email": "",
+      "address": {
+        "label1": "",
+        "label2": "",
+        "label3": "",
+        "zip_code": "",
+        "city": "",
+        "country": "",
+        "localisation": "N/A",
+        "full_address": ""
+      },
+      "notes": "",
+      "department": 1,
+      "position": 1
+    }
+  ],
+  "payment_terms": 1,
+  "currency": "USD",
+  "user_code": "CUS-122",
+  "opt_in_to_emails": false,
+  "comment": "",
+  "first_name": "test",
+  "last_name": " some special character: éá",
+  "middle_name": ""
+},
+{
+  "id": 244394,
+  "type": 1,
+  "status": 1,
+  "full_name": "AABBCCCDD",
+  "address": {
+    "label1": "popo",
+    "label2": "",
+    "label3": "",
+    "zip_code": "",
+    "city": "",
+    "country": "",
+    "localisation": "N/A",
+    "full_address": "popo"
+  },
+  "shipping_address": {
+    "label1": "popo",
+    "label2": "",
+    "label3": "",
+    "zip_code": "",
+    "city": "",
+    "country": "",
+    "localisation": "N/A",
+    "full_address": "popo"
+  },
+  "phone_number": "",
+  "email": "",
+  "website": "",
+  "payment_terms": 1,
+  "currency": "USD",
+  "user_code": "CUS-035",
+  "opt_in_to_emails": false,
+  "comment": "",
+  "company_name": "AABBCCCDD",
+  "employee_count": 1,
+  "industry": 1,
+  "incorporation_status": 1,
+  "taxpayer_id_number": "",
+  "siret": ""
+},
+{
+  "id": 244393,
+  "type": 1,
+  "status": 1,
+  "full_name": "aassa",
+  "address": {
+    "label1": "as",
+    "label2": "",
+    "label3": "",
+    "zip_code": "",
+    "city": "",
+    "country": "",
+    "localisation": "N/A",
+    "full_address": "as"
+  },
+  "shipping_address": {
+    "label1": "as",
+    "label2": "",
+    "label3": "",
+    "zip_code": "",
+    "city": "",
+    "country": "",
+    "localisation": "N/A",
+    "full_address": "as"
+  },
+  "phone_number": "",
+  "email": "",
+  "website": "",
+  "payment_terms": 1,
+  "currency": "USD",
+  "user_code": "CUS-034",
+  "opt_in_to_emails": false,
+  "comment": "",
+  "company_name": "aassa",
+  "employee_count": 1,
+  "industry": 1,
+  "incorporation_status": 1,
+  "taxpayer_id_number": "",
+  "siret": ""
+}]

@@ -1,0 +1,9 @@
+HTTP/1.1 404 Not Found
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 05 Mar 2014 00:04:23 GMT
+Accept-Ranges: bytes
+Server: Restlet-Framework/2.2m3
+Vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+Content-Length: 64
+
+{"error":{"code":"003","message":"The resource was not found."}}
