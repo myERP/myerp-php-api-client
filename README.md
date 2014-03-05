@@ -12,10 +12,77 @@ Assuming composer.phar is located in your project's root directory, run the foll
 php composer.phar require myERP/myerp-php-api-client:~1.0
 ```
 
-## Usage
+## Getting Started
 
-TODO
+This wrapper uses [Guzzle](https://github.com/guzzle/guzzle) to communicate with the REST web service.
 
+- 1 - Retrieve your API_KEY and your API_EMAIL from the API settings. More information [here](http://developers.myerp.com/docs/1.0/overview/security_authentication.html).
+
+- 2 - Initiate the client by:
+
+
+```php
+use MyERP\MyERP;
+$myERP = new MyERP('API_EMAIL', 'API_KEY');
+```
+- 3 - Now you're ready to make authorized API requests to your domain!
+
+```php
+// Get a specific customer/lead
+$response = $myERP->accounts()->find(261367);
+$headers = $response->headers;
+$customer = $response->body;
+echo $customer['full_name'] . ' [id=#' . $customer['id'] . ']' . "\n";
+
+// create a customer
+$jane = [
+    "type" => 2, //individual
+    "status" => 1, //customer
+    "first_name" => "Jane",
+    "last_name" => "Doe",
+    "email" => "jane.doe@mail.com"
+];
+$jane = $myERP->accounts()->save($jane)->body;
+echo $jane['full_name'] . ' created [id=#' . $jane['id'] . ', email=' . $jane['email'] . ']' . "\n";
+
+// update some fields
+$jane['email'] = 'newemail@mail.com';
+$jane = $myERP->accounts()->save($jane)->body;
+echo $jane['full_name'] . ' updated [id=#' . $jane['id'] . ', email=' . $jane['email'] . ']' . "\n";
+
+// Retrieve all customers and leads using pagination
+$limit = 100;
+$page = 0;
+do {
+  $response = $myERP->accounts()->findAll(['offset' => $page * $limit, 'limit'=> $limit]);
+  foreach ($response->body as $customer) {
+      echo $customer['full_name'] . ' [id=#' . $customer['id'] . ']' . "\n";
+  }
+  $page++;
+} while ($response->hasNextPage());
+
+// delete a customer
+$byeJane = $myERP->accounts()->delete(261368)->body;
+echo $byeJane['full_name'] . ' updated [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
+
+// bulk creation/modification
+$customers = $myERP->accounts()->bulkSave([$jane, $john, $dave])->body;
+var_dump($customers);
+
+// bulk deletion
+$customers = $myERP->accounts()->delete([$jane, $john, $dave])->body;
+// or $customers = $myERP->accounts()->delete([['id' => 12345], ['id' => 12346], ['id' => 12347]])->body;
+var_dump($customers);
+
+
+// catching errors
+try {
+  $response = $myERP->accounts()->find(2613670);
+  //....
+} catch(APIException $e) {
+  echo $e->getCode() . ' ' . $e->getMessage();
+}
+```
 
 ## Contributing
 
