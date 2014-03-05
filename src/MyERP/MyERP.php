@@ -21,6 +21,7 @@ class MyERP{
     protected $items;
     protected $itemFamilies;
     protected $salesOrders;
+    protected $accountingTransactions
 
     /**
      * @param string $apiEmail MyERP API email
@@ -72,4 +73,14 @@ class MyERP{
       $this->salesOrders = new Api\SalesOrders($this->apiEmail, $this->apiKey, $this->params);
       return $this->salesOrders;
     }
+
+    public function accountingTransactions(){
+      if(isset($this->accountingTransactions)){
+          return $this->accountingTransactions;
+      }
+      $this->accountingTransactions = new Api\AccountingTransactions($this->apiEmail, $this->apiKey, $this->params);
+      return $this->accountingTransactions;
+    }
+
+
 }
