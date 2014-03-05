@@ -18,6 +18,7 @@ class MyERP{
 
     protected $accounts;
     protected $projects;
+    protected $items;
 
     /**
      * @param string $apiEmail MyERP API email
@@ -44,5 +45,13 @@ class MyERP{
       }
       $this->projects = new Api\Projects($this->apiEmail, $this->apiKey, $this->params);
       return $this->projects;
+    }
+
+    public function items(){
+      if(isset($this->items)){
+          return $this->items;
+      }
+      $this->items = new Api\items($this->apiEmail, $this->apiKey, $this->params);
+      return $this->items;
     }
 }
