@@ -9,7 +9,7 @@ A PHP client library for [myERP's API](http://developers.myerp.com).
 Assuming composer.phar is located in your project's root directory, run the following command:
 
 ```bash
-php composer.phar require myERP/myerp-php-api-client:~1.0
+php composer.phar require myerp/myerp-php-api-client:~1.0.0
 ```
 
 ## Getting Started
