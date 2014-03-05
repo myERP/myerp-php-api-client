@@ -23,6 +23,7 @@ class MyERP{
     protected $salesOrders;
     protected $accountingTransactions;
     protected $paymentTerms;
+    protected $currencies;
 
     /**
      * @param string $apiEmail MyERP API email
@@ -91,5 +92,11 @@ class MyERP{
       return $this->paymentTerms;
     }
 
-
+    public function currencies(){
+      if(isset($this->currencies)){
+          return $this->currencies;
+      }
+      $this->currencies = new Api\Currencies($this->apiEmail, $this->apiKey, $this->params);
+      return $this->currencies;
+    }
 }
