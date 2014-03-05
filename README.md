@@ -1,6 +1,6 @@
 # myERP API
 
-[![Build Status](https://secure.travis-ci.org/myERP/myerp-php-api-client.png?branch=master)](http://travis-ci.org/myERP/myerp-php-api-client)
+[![Build Status](https://travis-ci.org/myERP/myerp-php-api-client.png?branch=master)](https://travis-ci.org/myERP/myerp-php-api-client)
 
 A PHP client library for [myERP's API](http://developers.myerp.com).
 
