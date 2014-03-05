@@ -96,7 +96,7 @@ Ask, or pick an issue and comment on it announcing your desire to work on it. Id
 
 - Search existing issues before raising a new one.
 
-- Include as much detail as possible. In particular, we need to know which OS you're using.
+- Include as much detail as possible.
 
 ### Pull requests
 
