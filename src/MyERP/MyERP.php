@@ -20,6 +20,7 @@ class MyERP{
     protected $projects;
     protected $items;
     protected $itemFamilies;
+    protected $salesOrders;
 
     /**
      * @param string $apiEmail MyERP API email
@@ -62,5 +63,13 @@ class MyERP{
       }
       $this->itemFamilies = new Api\ItemFamilies($this->apiEmail, $this->apiKey, $this->params);
       return $this->itemFamilies;
+    }
+
+    public function salesOrders(){
+      if(isset($this->salesOrders)){
+          return $this->salesOrders;
+      }
+      $this->salesOrders = new Api\SalesOrders($this->apiEmail, $this->apiKey, $this->params);
+      return $this->salesOrders;
     }
 }
