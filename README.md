@@ -125,4 +125,4 @@ Ask, or pick an issue and comment on it announcing your desire to work on it. Id
 
 ## License
 
-The myERP API gem is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+The myERP API wrapper is released under the [MIT License](http://www.opensource.org/licenses/MIT).
