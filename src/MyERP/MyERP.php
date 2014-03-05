@@ -19,6 +19,7 @@ class MyERP{
     protected $accounts;
     protected $projects;
     protected $items;
+    protected $itemFamilies;
 
     /**
      * @param string $apiEmail MyERP API email
@@ -51,7 +52,15 @@ class MyERP{
       if(isset($this->items)){
           return $this->items;
       }
-      $this->items = new Api\items($this->apiEmail, $this->apiKey, $this->params);
+      $this->items = new Api\Items($this->apiEmail, $this->apiKey, $this->params);
       return $this->items;
+    }
+
+    public function itemFamilies(){
+      if(isset($this->itemFamilies)){
+          return $this->itemFamilies;
+      }
+      $this->itemFamilies = new Api\ItemFamilies($this->apiEmail, $this->apiKey, $this->params);
+      return $this->itemFamilies;
     }
 }
