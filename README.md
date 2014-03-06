@@ -63,7 +63,7 @@ do {
 
 // delete a customer
 $byeJane = $myERP->accounts()->delete(261368)->body;
-echo $byeJane['full_name'] . ' updated [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
+echo $byeJane['full_name'] . ' deleted [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
 
 // bulk creation/modification
 $customers = $myERP->accounts()->bulkSave([$jane, $john, $dave])->body;
