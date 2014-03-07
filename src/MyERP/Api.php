@@ -34,12 +34,19 @@ abstract class Api{
         $this->baseUrl = $url;
     }
 
-    /**
-    * $params array of params
-    */
-    public function findAll(array $params = array()) {
-      $url = $this->getUrl() . (empty($params) ? '' : ('?' . http_build_query($params)));
-      return $this->request($url, array(), 'GET');
+    public function all() {
+      return $this->findAll();
+    }
+
+    public function findAll() {
+      $limit = 100; $page = 0; $res = [];
+      do {
+	$url = $this->getUrl() . ('?' . http_build_query(['offset' => $page * $limit, 'limit'=> $limit]));
+	$response = $this->request($url, array(), 'GET');
+	$res = array_merge($res, $response->body);
+	$page++;
+      } while ($response->hasNextPage());
+      return $res;
     }
 
     /**
@@ -49,7 +56,7 @@ abstract class Api{
     */
     public function find($id) {
       if (is_int($id) && $id > 0) {
-        return $this->request($this->getUrl($id), array(), 'GET');
+	return $this->request($this->getUrl($id), array(), 'GET')->body;
       }
       else {
         throw new Exception('Usage: the parameter $id should be an integer > 0');
@@ -63,10 +70,10 @@ abstract class Api{
     */
     public function delete($id) {
       if (is_array($id)) { // [ ['id' => 12], ['id' => 13], .. ]
-        return $this->request($this->getUrl(), $id, 'DELETE');
+	return $this->request($this->getUrl(), $id, 'DELETE')->body;
       }
       else if (is_int($id) && $id > 0) {
-        return $this->request($this->getUrl($id), array(), 'DELETE');
+	return $this->request($this->getUrl($id), array(), 'DELETE')->body;
       }
       else {
         throw new Exception('Usage: the parameter should be an array of objects with at least the "id" key/value
@@ -94,11 +101,11 @@ abstract class Api{
     }
 
     private function put($id = null, array $body = array()) {
-      return $this->request($this->getUrl($id), $body, 'PUT');
+      return $this->request($this->getUrl($id), $body, 'PUT')->body;
     }
 
     private function post(array $body = array()) {
-      return $this->request($this->getUrl(), $body, 'POST');
+      return $this->request($this->getUrl(), $body, 'POST')->body;
     }
 
     private function request($url, array $body = array(), $method){

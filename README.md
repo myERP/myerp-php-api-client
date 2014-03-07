@@ -26,12 +26,13 @@ use MyERP\MyERP;
 $myERP = new MyERP('API_EMAIL', 'API_KEY');
 ```
 - 3 - Now you're ready to make authorized API requests to your domain!
-
 ```php
+// Get all the customers and leads
+$customers = $myERP->customers()->findAll();
+var_dump($customers);
+
 // Get a specific customer/lead
-$response = $myERP->accounts()->find(261367);
-$headers = $response->headers;
-$customer = $response->body;
+$customer = $myERP->customers()->find(261367);
 echo $customer['full_name'] . ' [id=#' . $customer['id'] . ']' . "\n";
 
 // create a customer
@@ -42,42 +43,31 @@ $jane = [
     "last_name" => "Doe",
     "email" => "jane.doe@mail.com"
 ];
-$jane = $myERP->accounts()->save($jane)->body;
+$jane = $myERP->customers()->save($jane);
 echo $jane['full_name'] . ' created [id=#' . $jane['id'] . ', email=' . $jane['email'] . ']' . "\n";
 
 // update some fields
 $jane['email'] = 'newemail@mail.com';
-$jane = $myERP->accounts()->save($jane)->body;
+$jane = $myERP->customers()->save($jane);
 echo $jane['full_name'] . ' updated [id=#' . $jane['id'] . ', email=' . $jane['email'] . ']' . "\n";
 
-// Retrieve all customers and leads using pagination
-$limit = 100;
-$page = 0;
-do {
-  $response = $myERP->accounts()->findAll(['offset' => $page * $limit, 'limit'=> $limit]);
-  foreach ($response->body as $customer) {
-      echo $customer['full_name'] . ' [id=#' . $customer['id'] . ']' . "\n";
-  }
-  $page++;
-} while ($response->hasNextPage());
-
 // delete a customer
-$byeJane = $myERP->accounts()->delete(261368)->body;
-echo $byeJane['full_name'] . ' deleted [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
+$byeJane = $myERP->customers()->delete(261368);
+echo $byeJane['full_name'] . ' updated [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
 
 // bulk creation/modification
-$customers = $myERP->accounts()->bulkSave([$jane, $john, $dave])->body;
+$customers = $myERP->customers()->bulkSave([$jane, $john, $dave]);
 var_dump($customers);
 
 // bulk deletion
-$customers = $myERP->accounts()->delete([$jane, $john, $dave])->body;
-// or $customers = $myERP->accounts()->delete([['id' => 12345], ['id' => 12346], ['id' => 12347]])->body;
+$customers = $myERP->customers()->delete([$jane, $john, $dave]);
+// or $customers = $myERP->customers()->delete([['id' => 12345], ['id' => 12346], ['id' => 12347]]);
 var_dump($customers);
 
 
 // catching errors
 try {
-  $response = $myERP->accounts()->find(2613670);
+  $response = $myERP->customers()->find(2613670);
   //....
 } catch(APIException $e) {
   echo $e->getCode() . ' ' . $e->getMessage();
