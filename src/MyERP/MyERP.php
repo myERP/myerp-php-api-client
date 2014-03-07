@@ -17,11 +17,12 @@ class MyERP{
     protected $params;
 
     protected $accounts;
+    protected $customers;
     protected $projects;
     protected $items;
     protected $itemFamilies;
     protected $salesOrders;
-    protected $accountingTransactions;
+    protected $transactions;
     protected $paymentTerms;
     protected $currencies;
 
@@ -42,6 +43,14 @@ class MyERP{
       }
       $this->accounts = new Api\Accounts($this->apiEmail, $this->apiKey, $this->params);
       return $this->accounts;
+    }
+
+    public function customers(){
+      if(isset($this->customers)){
+	  return $this->customers;
+      }
+      $this->customers = new Api\Customers($this->apiEmail, $this->apiKey, $this->params);
+      return $this->customers;
     }
 
     public function projects(){
@@ -76,12 +85,12 @@ class MyERP{
       return $this->salesOrders;
     }
 
-    public function accountingTransactions(){
-      if(isset($this->accountingTransactions)){
-          return $this->accountingTransactions;
+    public function transactions(){
+      if(isset($this->transactions)){
+	  return $this->transactions;
       }
-      $this->accountingTransactions = new Api\AccountingTransactions($this->apiEmail, $this->apiKey, $this->params);
-      return $this->accountingTransactions;
+      $this->transactions = new Api\Transactions($this->apiEmail, $this->apiKey, $this->params);
+      return $this->transactions;
     }
 
     public function paymentTerms(){
