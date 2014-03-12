@@ -26,6 +26,7 @@ use MyERP\MyERP;
 $myERP = new MyERP('API_EMAIL', 'API_KEY');
 ```
 - 3 - Now you're ready to make authorized API requests to your domain!
+
 ```php
 // Get all the customers and leads
 $customers = $myERP->customers()->findAll();
@@ -54,16 +55,6 @@ echo $jane['full_name'] . ' updated [id=#' . $jane['id'] . ', email=' . $jane['e
 // delete a customer
 $byeJane = $myERP->customers()->delete(261368);
 echo $byeJane['full_name'] . ' updated [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
-
-// bulk creation/modification
-$customers = $myERP->customers()->bulkSave([$jane, $john, $dave]);
-var_dump($customers);
-
-// bulk deletion
-$customers = $myERP->customers()->delete([$jane, $john, $dave]);
-// or $customers = $myERP->customers()->delete([['id' => 12345], ['id' => 12346], ['id' => 12347]]);
-var_dump($customers);
-
 
 // catching errors
 try {

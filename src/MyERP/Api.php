@@ -64,29 +64,17 @@ abstract class Api{
     }
 
     /**
-    * $id
-    *   - array of objects with at least the "id" key/value for a batch request
-    *   - integer > 0 for a single deletion
+    * $id integer > 0 for a single deletion
     */
     public function delete($id) {
-      if (is_array($id)) { // [ ['id' => 12], ['id' => 13], .. ]
-	return $this->request($this->getUrl(), $id, 'DELETE')->body;
-      }
-      else if (is_int($id) && $id > 0) {
-	return $this->request($this->getUrl($id), array(), 'DELETE')->body;
+      if (is_int($id) && $id > 0) {
+		return $this->request($this->getUrl($id), array(), 'DELETE')->body;
       }
       else {
-        throw new Exception('Usage: the parameter should be an array of objects with at least the "id" key/value
-         for batch deletion or an integer for a single deletion');
+	throw new Exception('Usage: the parameter should be an integer for a single deletion');
       }
     }
 
-    /**
-    * $payload array of objects to save via a batch request
-    */
-    public function bulkSave(array $payload = array()) {
-      return $this->put(null, $payload);
-    }
 
     /**
     * $payload an object to create or update depending on the id
