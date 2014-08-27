@@ -7,9 +7,9 @@ class MyERP{
 
     public static $DEFAULT_PARAMS  = [
       'protocol' => 'https',
-      'host' => 'app.myerp.com',
+      'host' => 'api.myerp.com',
       'port' => 443,
-      'prefix' => '/api/v1/'
+      'prefix' => '/v1/'
     ];
 
     protected $apiEmail;
