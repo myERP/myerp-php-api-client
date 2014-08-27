@@ -9,7 +9,7 @@ A PHP client library for [myERP's API](http://developers.myerp.com).
 Assuming composer.phar is located in your project's root directory, run the following command:
 
 ```bash
-php composer.phar require myerp/myerp-php-api-client:~1.0.1
+php composer.phar require myerp/myerp-php-api-client:~1.0.2
 ```
 
 ## Getting Started
@@ -54,7 +54,7 @@ echo $jane['full_name'] . ' updated [id=#' . $jane['id'] . ', email=' . $jane['e
 
 // delete a customer
 $byeJane = $myERP->customers()->delete(261368);
-echo $byeJane['full_name'] . ' updated [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
+echo $byeJane['full_name'] . ' deleted [id=#' . $byeJane['id'] . ', email=' . $byeJane['email'] . ']' . "\n";
 
 // catching errors
 try {
